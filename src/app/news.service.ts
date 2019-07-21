@@ -1,13 +1,32 @@
 import { Injectable } from '@angular/core';
-// import { NewsApiService } from 'angular-news-api';
-// import { Observable } from 'rxjs';
+import { NewsApiService } from 'angular-news-api';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class NewsService {
 
-    constructor() {}
+    constructor(private newsApiService: NewsApiService) {}
+ 
+    public topHeadlines() {
+    return this.newsApiService.topHeadlines({
+        sources: 'bbc-news,the-verge'
+        })
+    }
+    
+    public everything(search) {
+    return this.newsApiService.everything({
+        q: search,
+        language: 'en'
+        })
+    }
+    
+    sources() {
+    this.newsApiService.sources({
+        country: 'us'
+        }).subscribe(data => console.log(data));
+    }
 
     /**
      * Consume the NewsApiService here, make sure

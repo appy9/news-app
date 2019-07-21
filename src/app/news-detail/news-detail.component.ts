@@ -52,6 +52,11 @@ export class NewsDetailComponent implements OnInit {
         this.article$ = this.activatedRoute.paramMap.pipe(
             map(() => window.history.state)
         );
+        // this.article$ = this.router.events.pipe(
+        //     filter(e => e instanceof NavigationStart),
+        //     map(() => this.router.getCurrentNavigation().extras.state)
+        //   )
+        // );
 
         // Make sure that this page can only be
         // accessible from the main News list with
@@ -62,5 +67,12 @@ export class NewsDetailComponent implements OnInit {
 
     public goToArticle(url: string): void {
         // Open original article in new tab
+        window.open(url,'_blank');
+    }
+
+    private getDateString(dateString:string): string{
+        let date = new Date(dateString);
+        const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return month_names_short[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
     }
 }

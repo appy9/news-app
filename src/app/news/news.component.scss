@@ -1,0 +1,59 @@
+.card-subtitle{
+    position: relative;
+    top: -20px;
+    background: #fff;
+}
+.card-body{
+    padding: 0;
+    background: #fff;
+    z-index: 1;
+}
+.article-img{
+    border-radius: 0;
+    transition: transform .5s ease;    
+    width: 100%;
+    transition: transform .5s, visibility .5s ease-in;    
+}
+.card{
+    overflow: hidden;
+    border:none;
+    border-radius: 0;
+    &:hover{
+        .article-img{
+            transform: scale(1.2);
+        }
+    }
+}
+.search-bar{ 
+    .user-input-wrp {
+        position: relative;
+        width: 50%;
+    }
+    .user-input-wrp .inputText{
+        width: 100%;
+        outline: none;
+        border:none;
+        border-bottom: 1px solid #777;
+         box-shadow: none !important;
+    }
+    .user-input-wrp .inputText:focus{
+        border-color:#f74062;        
+        border-width: medium medium 2px;
+    }
+    .user-input-wrp .floating-label {
+        position: absolute;
+        pointer-events: none;
+        top: 18px;
+        left: 10px;
+        transition: 0.2s ease all;
+    }
+    .user-input-wrp input:focus ~ .floating-label,
+    .user-input-wrp input:not(:focus):valid ~ .floating-label{
+        top: 0px;
+        left: 10px;
+        font-size: 13px;
+        opacity: 1;
+        color:#f74062;   
+    }
+    
+}

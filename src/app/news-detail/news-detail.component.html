@@ -1,9 +1,45 @@
 <div class="content">
     <div *ngIf="(article$ | async) as article">
-        {{ article.title }} details
         <!-- Artile man image -->
         <!-- Artile title, description, metadata -->
         <!-- Read more button -->
         <!-- Comments section -->
+        <div class="card text-grey">
+            <img class="card-img-top article-img" src="{{article.urlToImage}}" alt="Insert placeholder">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="">
+                                <ul class="mt-4 row nav-list">
+                                    <li class="my-1 col-sm-12 col-3">{{ article.source.name }}</li>
+                                    <li class="my-1 col-sm-12 col-3">{{ article.author }}</li>
+                                    <li class="my-1 col-sm-12 col-3">{{ getDateString(article.publishedAt)}}</li>
+                                    <li class="my-1 text-pink col-sm-12 col-3">{{comments.length}} Comments</li>
+                                </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-9 text-center picked-box">                            
+                            <h4 class="card-title text-dark-grey text-left text-upper-case px-3 py-2">{{ article.title }}</h4>
+                            <p class="card-text p-2 text-left ">{{ article.description }}</p>
+                            <p class="card-text p-2 text-left ">{{ article.content }}</p>
+                            <mat-chip color="accent" class="read-more f-3 px-3 py-2 mt-1" selected (click)="goToArticle(article.url)">Read more</mat-chip>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="comments-box mx-1 my-1">
+            <h4 class="text-dark-grey my-4">{{comments.length}} Comments</h4>
+            <div *ngFor="let comment of comments">
+                <div class="row">
+                        <div class="col-sm-1 col-2"><img src="{{comment.avatar}}"></div>
+                        <div class="col-sm-11 col-10">
+                            <h6 class="text-dark-grey">{{comment.name}}</h6>
+                            <p class="text-grey">{{comment.comment}}</p>
+                        </div>
+                </div>                    
+            </div>
+        </div>
     </div>
 </div>

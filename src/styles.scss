@@ -5,13 +5,35 @@ body {
   font-weight: 300;
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(0, 0, 0, 0.7);
   overflow-x: hidden;
   background-color: #FAFAFA;
 }
 
-$primary-color: #f74062;
+$pink-color: #f74062;
+.text-pink{
+  color:$pink-color;
+}
 
 .content {
-
+  background-color: #fff;
+  max-width: 1200px;
+  margin: auto;
+  .f-2 {
+    font-size: 14px;
+  }
+  .f-3 {
+    font-size: 16px;
+  }
+  .f-5 {
+    font-size: 20px;
+  }
+  .text-upper-case{
+    text-transform: uppercase;
+  }
+  .text-dark-grey{
+    color: #666;
+  }
+  .text-grey{
+    color:#999;
+  }
 }

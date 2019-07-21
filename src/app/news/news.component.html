@@ -1,7 +1,30 @@
 <div class="content">
-    <div *ngFor="let article of articles">
-        <a routerLink="/article" [state]="article">{{ article.title }}</a>
+    <div class="row">
+    <div class="search-bar col-sm-4 mt-2 ml-1 mb-4 f-3">        
+        <div class="user-input-wrp">
+          <br/>
+          <input type="text" #searchbox="ngModel" [(ngModel)]="searchbox.value" required class="inputText"/>
+          <span class="floating-label">Search</span>
+        </div>
     </div>
+    <div class="w-100"></div>
+    <div *ngFor="let article of articles" class="col-sm-4 d-flex align-items-stretch">
+        <!--<a routerLink="/article" [state]="article">{{ article.title }}</a>-->
+        
+        <div class="card text-grey" (click)="launchArticle(article)">
+            <img class="card-img-top article-img" src="{{article.urlToImage || '../../assets/images/placeholder.jpg'}}" alt="Insert placeholder">
+            <div class="card-body">
+                <h6 class="card-subtitle mr-4 pl-3 pt-4 f-2 text-muted text-upper-case">
+                    <span class="text-dark-grey">{{ article.author }}</span> 
+                    <span class="m-3">{{ getDateString(article.publishedAt)}}</span>
+                </h6>
+                <h4 class="card-title text-dark-grey text-upper-case px-3 py-2">{{ article.title }}</h4>
+                <p class="card-text p-3">{{ article.description }}</p>
+            </div>
+        </div>
+    </div>    
+    </div>
+    <div class="text-center text-dark-grey f-5 mt-3" *ngIf='articles.length === 0'>No articles found for "{{searchbox.value}}"</div>
 
     <!-- Search mat input with debouncing and mat progress bar for loading -->
     <!-- List of fetched articles as snippets per the provided designs -->
